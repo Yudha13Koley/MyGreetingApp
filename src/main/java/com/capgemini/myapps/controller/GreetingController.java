@@ -1,5 +1,7 @@
 package com.capgemini.myapps.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -29,9 +31,14 @@ public class GreetingController {
 		}
 		return greetingService.addGreeting(user);
 	}
-	
+
 	@GetMapping("/greeting/{id}")
 	public Greeting getGreeting(@PathVariable long id) {
 		return greetingService.getGreetingById(id);
+	}
+
+	@GetMapping("/greeting/findall")
+	public List<Greeting> getListGreeting() {
+		return greetingService.getAllGreeting();
 	}
 }
