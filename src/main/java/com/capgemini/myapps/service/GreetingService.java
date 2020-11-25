@@ -45,4 +45,14 @@ public class GreetingService implements IGreetingService {
 		return greetingRepository.findById(greeting.getId()).get();
 	}
 
+	@Override
+	public boolean deleteGreetingById(long id) {
+		if (greetingRepository.existsById(id)) {
+			greetingRepository.deleteById(id);
+			return true;
+		} else {
+			return false;
+		}
+	}
+
 }

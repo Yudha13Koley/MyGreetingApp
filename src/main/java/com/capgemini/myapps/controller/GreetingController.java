@@ -48,4 +48,13 @@ public class GreetingController {
 	public Greeting editGreetingMessage(@RequestBody Greeting greeting) {
 		return greetingService.getEditedGreeting(greeting);
 	}
+
+	@GetMapping("/greeting/delete/{id}")
+	public String deleteGreeting(@PathVariable long id) {
+		if (greetingService.deleteGreetingById(id)) {
+			return "Delete of ID : " + id + " is SUCCESSFUL !";
+		} else {
+			return "Delete of ID : " + id + " is NOT SUCCESSFUL !";
+		}
+	}
 }
