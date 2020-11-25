@@ -35,4 +35,14 @@ public class GreetingService implements IGreetingService {
 		return greetingRepository.findAll();
 	}
 
+	@Override
+	public Greeting getEditedGreeting(Greeting greeting) {
+		if (greetingRepository.existsById(greeting.getId())) {
+			greetingRepository.save(greeting);
+		} else {
+			greetingRepository.save(greeting);
+		}
+		return greetingRepository.findById(greeting.getId()).get();
+	}
+
 }
